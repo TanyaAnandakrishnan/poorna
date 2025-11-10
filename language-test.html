@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Test - Poornam Naturals</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .language-info {
+            background: #e8f5e8;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 4px solid #4CAF50;
+        }
+        .test-buttons {
+            margin: 20px 0;
+        }
+        .test-buttons button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .test-buttons button:hover {
+            background: #45a049;
+        }
+        .navigation-links {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f0f8ff;
+            border-radius: 5px;
+        }
+        .navigation-links a {
+            display: inline-block;
+            margin: 5px 10px;
+            padding: 8px 15px;
+            background: #2196F3;
+            color: white;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+        .navigation-links a:hover {
+            background: #1976D2;
+        }
+        #google_translate_element {
+            margin: 20px 0;
+            padding: 10px;
+            background: #fff3cd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Language Synchronization Test</h1>
+        
+        <div id="google_translate_element"></div>
+        
+        <div class="language-info">
+            <h3>Current Language Status:</h3>
+            <p><strong>Current Language:</strong> <span id="currentLang">Loading...</span></p>
+            <p><strong>LocalStorage:</strong> <span id="localStorage">Loading...</span></p>
+            <p><strong>SessionStorage:</strong> <span id="sessionStorage">Loading...</span></p>
+            <p><strong>Cookie:</strong> <span id="cookieValue">Loading...</span></p>
+        </div>
+        
+        <div class="test-buttons">
+            <h3>Test Language Changes:</h3>
+            <button onclick="testChangeToTamil()">Change to Tamil</button>
+            <button onclick="testChangeToEnglish()">Change to English</button>
+            <button onclick="refreshStatus()">Refresh Status</button>
+            <button onclick="clearAllLanguageData()">Clear All Data</button>
+        </div>
+        
+        <div class="navigation-links">
+            <h3>Test Navigation (Language should persist):</h3>
+            <a href="home.html">Go to Home</a>
+            <a href="products.html">Go to Products</a>
+            <a href="about.html">Go to About</a>
+            <a href="language-test.html">Reload This Page</a>
+        </div>
+        
+        <div class="language-info">
+            <h3>Instructions:</h3>
+            <ol>
+                <li>Use the Google Translate dropdown above to change language</li>
+                <li>Check that the status updates correctly</li>
+                <li>Navigate to other pages and verify language persists</li>
+                <li>Open multiple tabs and test cross-tab synchronization</li>
+                <li>Use the test buttons to programmatically change language</li>
+            </ol>
+        </div>
+        
+        <div class="language-info">
+            <h3>Sample Text for Translation Testing:</h3>
+            <p>Welcome to Poornam Naturals! We offer the finest cold-pressed oils and traditional rice products.</p>
+            <p>Our products are made using traditional methods that preserve all natural nutrients.</p>
+            <p>Experience the authentic taste of tradition and wellness with every product.</p>
+        </div>
+    </div>
+
+    <!-- Language Management Scripts -->
+    <script src="language-manager.js"></script>
+    
+    <script>
+        // Set default language based on cookie (before Google loads)
+        (function() {
+            var lang = (document.cookie.match(/(^|;\s*)googtrans=\/en\/(\w+)/) || [])[2];
+            if (lang) {
+                var newCookie = "/en/" + lang;
+                document.cookie = "googtrans=" + newCookie + ";path=/";
+                document.cookie = "googtrans=" + newCookie + ";path=/;domain=" + location.hostname;
+            }
+        })();
+    </script>
+    
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,ta',
+                layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+            }, 'google_translate_element');
+        }
+    </script>
+    
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="translation-fix.js"></script>
+    
+    <script>
+        // Test functions
+        function refreshStatus() {
+            const currentLang = window.languageManager ? window.languageManager.getCurrentLanguage() : 'Unknown';
+            const localStorage = window.localStorage.getItem('poornam_language') || 'Not set';
+            const sessionStorage = window.sessionStorage.getItem('poornam_session_lang') || 'Not set';
+            
+            // Get cookie value
+            const cookieMatch = document.cookie.match(/(^|;\s*)googtrans=\/en\/(\w+)/);
+            const cookieValue = cookieMatch ? cookieMatch[2] : 'Not set';
+            
+            document.getElementById('currentLang').textContent = currentLang;
+            document.getElementById('localStorage').textContent = localStorage;
+            document.getElementById('sessionStorage').textContent = sessionStorage;
+            document.getElementById('cookieValue').textContent = cookieValue;
+        }
+        
+        function testChangeToTamil() {
+            if (window.languageManager) {
+                window.languageManager.changeLanguage('ta');
+                setTimeout(refreshStatus, 1000);
+            } else {
+                alert('Language manager not available');
+            }
+        }
+        
+        function testChangeToEnglish() {
+            if (window.languageManager) {
+                window.languageManager.changeLanguage('en');
+                setTimeout(refreshStatus, 1000);
+            } else {
+                alert('Language manager not available');
+            }
+        }
+        
+        function clearAllLanguageData() {
+            localStorage.removeItem('poornam_language');
+            sessionStorage.removeItem('poornam_session_lang');
+            document.cookie = 'googtrans=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
+            document.cookie = 'googtrans=; path=/; domain=' + location.hostname + '; expires=Thu, 01 Jan 1970 00:00:00 GMT';
+            
+            alert('All language data cleared. Page will reload.');
+            window.location.reload();
+        }
+        
+        // Auto-refresh status every 2 seconds
+        setInterval(refreshStatus, 2000);
+        
+        // Initial status load
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(refreshStatus, 1000);
+        });
+        
+        // Listen for language changes
+        window.addEventListener('languageChanged', function(e) {
+            console.log('Language changed event received:', e.detail.language);
+            setTimeout(refreshStatus, 500);
+        });
+    </script>
+</body>
+</html>

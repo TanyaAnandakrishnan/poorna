@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poornam Naturals - Premium Natural Products</title>
+    <!-- Add Font Awesome for WhatsApp icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Variables */
+        :root {
+            --background: #faf9f4;
+            --foreground: #1a1410;
+            --cream: #fef9f3;
+            --sage-green: #7a9070;
+            --forest-green: #2d4a2b;
+            --deep-green: #1f3a1d;
+            --gold: #259b1a;
+            --rich-gold: #0a7107;
+            --charcoal: #1a1410;
+            --light-beige: #ede9e0;
+            --warm-cream: #f5f2eb;
+            --header-green: #4CAF50;
+        }
+
+        /* Reset and Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: "Poppins", sans-serif; 
+            color: var(--charcoal); 
+            background-color: var(--background); 
+            line-height: 1.6; 
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 { font-family: "Playfair Display", serif; font-weight: 700; }
+        h1 { font-size: clamp(2.8rem, 7vw, 4rem); line-height: 1.2; }
+        h2 { font-size: clamp(2rem, 6vw, 3.5rem); margin-bottom: 1.5rem; color: var(--deep-green); }
+        h3 { font-size: 1.5rem; color: var(--deep-green); }
+
+        /* Layout */
+        .container { max-width: 80rem; margin: 0 auto; padding: 0 1.5rem; }
+        .section-bg-warm { background-color: var(--warm-cream); }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-header p { font-size: 1.125rem; color: var(--sage-green); max-width: 32rem; margin: 1rem auto 0; font-weight: 500; }
+
+        /* Buttons */
+        .btn { padding: 0.75rem 1.5rem; border: none; border-radius: 50px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; font-size: 1rem; }
+        .btn-primary { background-color: #4CAF50; color: white; }
+        .btn-primary:hover { background-color: #2e7d32; transform: translateY(-2px); }
+        .btn-gold { background-color: var(--rich-gold); color: var(--charcoal); padding: 1rem 2rem; }
+        .btn-gold:hover { background-color: #a67318; transform: translateY(-2px); }
+        .btn-outline-cream { background-color: transparent; color: var(--cream); border: 2px solid var(--cream); padding: 1rem 2rem; }
+        .btn-outline-cream:hover { background-color: var(--cream); color: var(--deep-green); transform: translateY(-2px); }
+        .btn-icon { background-color: var(--deep-green); color: var(--cream); width: 2.5rem; height: 2.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; border: none; font-size: 1.25rem; }
+        .btn-icon:hover { background-color: var(--sage-green); transform: translateX(4px); }
+        .w-full { width: 100%; }
+
+        /* HEADER STYLES FROM FIRST CODE */
+        header {
+            background: #4CAF50;
+            color: #fff;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-sizing: border-box;
+        }
+        header .logo img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #b6f36c;
+            margin-right: 10px;
+        }
+        
+        .center-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 0;
+            background: rgba(255, 255, 255, 0.1);
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            z-index: 998;
+            backdrop-filter: blur(5px);
+        }
+
+        .center-logo img {
+            height: 60px;
+            width: auto;
+            border-radius: 8px;
+            object-fit: contain;
+            border: 2px solid #b6f36c;
+            box-shadow: 0 5px 20px rgba(182, 243, 108, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .center-logo img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(182, 243, 108, 0.6);
+        }
+
+        header .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #b6f36c;
+            margin-left: clamp(5px, 1.5vw, 20px);
+        }
+
+        header .logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+            flex-shrink: 0;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        .desktop-nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -200px;
+            width: 200px;
+            height: 120vh;
+            min-height: 120vh;
+            background: #4CAF50;
+            z-index: 99999;
+            transition: left 0.3s ease;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+            overflow-y: auto;
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: #2e7d32;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2em;
+            position: relative;
+        }
+
+        .sidebar-header .close-btn {
+            font-size: 18px;
+            cursor: pointer;
+            color: white;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10000;
+            background: rgba(0,0,0,0.5);
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .sidebar-nav {
+            padding: 30px 0;
+            margin-top: 20px;
+        }
+
+        .sidebar-nav a {
+            display: block;
+            color: white;
+            padding: 18px 20px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s;
+            background: rgba(255,255,255,0.05);
+            margin: 2px 10px;
+            border-radius: 8px;
+        }
+
+        .sidebar-nav a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateX(5px);
+        }
+
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0,0,0,0.5);
+            z-index: 99998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* GOOGLE TRANSLATE */
+        #google_translate_element {
+            flex-shrink: 0;
+        }
+
+        #google_translate_element select {
+            font-size: 12px;
+            padding: 6px 8px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            color: #000;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s ease;
+            min-width: 80px;
+        }
+
+        #google_translate_element select:hover {
+            border-color: #4CAF50;
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+        }
+        
+        /* Mobile Google Translate fixes */
+        @media (max-width: 768px) {
+            #google_translate_element {
+                position: static;
+                transform: none;
+                margin-left: auto;
+            }
+            
+            #google_translate_element select {
+                padding: 5px 6px;
+                font-size: 11px;
+                min-width: 70px;
+                max-width: 80px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            #google_translate_element select {
+                padding: 4px 5px;
+                font-size: 10px;
+                min-width: 60px;
+                max-width: 70px;
+            }
+        }
+
+        /* Hide Google Translate banner */
+        .goog-te-banner-frame.skiptranslate,
+        .goog-te-banner-frame,
+        body > .skiptranslate {
+            display: none !important;
+        }
+
+        html body .goog-te-banner-frame,
+        html body .goog-te-banner-frame.skiptranslate {
+            top: 0!important;
+            z-index: 99999 !important;
+        }
+
+        body {
+            top: 0 !important;
+        }
+        
+        /* Google Translate specific fixes */
+        .goog-te-combo {
+            max-width: 100px !important;
+            font-size: 11px !important;
+        }
+        
+        /* Force text wrapping in translated content */
+        [class*="goog-te"] * {
+            word-wrap: break-word !important;
+            overflow-wrap: break-word !important;
+            white-space: normal !important;
+        }
+        
+        /* Translated text fixes */
+        font[style*="vertical-align"] {
+            word-wrap: break-word !important;
+            overflow-wrap: break-word !important;
+            white-space: normal !important;
+        }
+
+        /* Hero Section */
+        .hero { 
+            position: relative; 
+            height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            overflow: hidden; 
+            padding-top: 10rem; 
+            margin-top: 2rem; 
+        }
+        .hero-background { 
+            position: absolute; 
+            inset: 0; 
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('website back.png');
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+            filter: blur(2px);
+        }
+        .hero-overlay { position: absolute; inset: 0; background-color: rgba(0, 0, 0, 0.6); }
+        .hero-content { position: relative; z-index: 2; text-align: center; color: var(--cream); max-width: 56rem; padding: 0 1.5rem; }
+        .hero-content h1 { 
+            color: white;
+            margin-bottom: 1.5rem; 
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .hero-content p { font-size: 1.3rem; margin-bottom: 2rem; font-weight: 300; filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3)); }
+        .hero-buttons { display: flex; justify-content: center; }
+        .scroll-indicator { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); z-index: 2; }
+        .scroll-dot { width: 2rem; height: 3rem; border: 2px solid var(--cream); border-radius: 1rem; display: flex; justify-content: center; position: relative; }
+        .scroll-dot::before { content: ""; width: 4px; height: 8px; background-color: var(--cream); border-radius: 2px; margin-top: 8px; animation: scroll-bounce 2s infinite; }
+        @keyframes scroll-bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); opacity: 0.3; } }
+
+        /* Why Choose Us */
+        .why-us { padding: 5rem 0; }
+        .why-us .section-header h2 { color: #1B5E20; font-weight: 900; border: 2px solid #C8E6C9; padding: 1rem; border-radius: 10px; }
+        .why-us .section-header p { color: #2E7D32; font-weight: 700; border: 1px solid #E8F5E8; padding: 0.8rem; border-radius: 8px; }
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .card { 
+            background: linear-gradient(135deg, #ffffff, #f0f8f0); 
+            padding: 2rem; 
+            border-radius: 1rem; 
+            border: none;
+            box-shadow: 0 6px 25px rgba(76, 175, 80, 0.15), inset 0 1px 0 rgba(255,255,255,0.8); 
+            transition: all 0.4s ease; 
+            position: relative;
+            overflow: hidden;
+            animation: cardFloat 4s ease-in-out infinite;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(76, 175, 80, 0.1), transparent);
+            transition: left 0.6s;
+        }
+        .card:hover::before {
+            left: 100%;
+        }
+        .card:hover { 
+            box-shadow: 0 20px 40px rgba(76, 175, 80, 0.25), inset 0 1px 0 rgba(255,255,255,0.9); 
+            transform: translateY(-12px) scale(1.02); 
+            animation-play-state: paused;
+        }
+        .card:nth-child(1) { 
+            animation-delay: 0s; 
+            background: linear-gradient(135deg, #E8F5E8, #C8E6C9);
+            box-shadow: 0 6px 25px rgba(200, 230, 201, 0.3), inset 0 1px 0 rgba(255,255,255,0.8);
+        }
+        .card:nth-child(2) { 
+            animation-delay: 1.3s; 
+            background: linear-gradient(135deg, #F1F8E9, #DCEDC8);
+            box-shadow: 0 6px 25px rgba(220, 237, 200, 0.3), inset 0 1px 0 rgba(255,255,255,0.8);
+        }
+        .card:nth-child(3) { 
+            animation-delay: 2.6s; 
+            background: linear-gradient(135deg, #E8F5E8, #C8E6C9);
+            box-shadow: 0 6px 25px rgba(200, 230, 201, 0.3), inset 0 1px 0 rgba(255,255,255,0.8);
+        }
+        .card-icon { 
+            width: 4rem; 
+            height: 4rem; 
+            background: linear-gradient(135deg, #4CAF50, #8BC34A); 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            margin-bottom: 1.5rem; 
+            color: white;
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);
+            animation: iconPulse 2s ease-in-out infinite;
+            position: relative;
+        }
+        .card-icon::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            opacity: 0.3;
+            animation: ripple 2s ease-out infinite;
+        }
+        .card-icon svg { 
+            width: 2rem; 
+            height: 2rem; 
+            z-index: 2;
+            position: relative;
+        }
+        .card h3 { 
+            margin-bottom: 0.75rem; 
+            color: #1B5E20;
+            font-weight: 800;
+            font-size: 1.6rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: textGlow 3s ease-in-out infinite;
+        }
+        .card p { 
+            color: #2E7D32; 
+            line-height: 1.6;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        
+        @keyframes cardFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        @keyframes ripple {
+            0% { transform: scale(1); opacity: 0.3; }
+            100% { transform: scale(1.4); opacity: 0; }
+        }
+        
+        @keyframes textGlow {
+            0%, 100% { text-shadow: 0 0 5px rgba(76, 175, 80, 0.3); }
+            50% { text-shadow: 0 0 15px rgba(76, 175, 80, 0.6); }
+        }
+
+        /* Featured Products */
+        .featured-products { padding: 5rem 0; background-color: var(--cream); }
+        .featured-products .section-header h2 { color: #000; font-weight: 900; }
+        .featured-products .section-header p { color: #000; font-weight: 700; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 3rem; }
+        .product-card { background-color: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: all 0.3s ease; border: 1px solid var(--light-beige); cursor: pointer; }
+        .product-card:hover { box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15); transform: translateY(-8px); }
+        .product-image { position: relative; height: 18rem; background-color: var(--light-beige); overflow: hidden; }
+        .product-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
+        .product-card:hover .product-image img { transform: scale(1.1); }
+        .product-badge { position: absolute; top: 1rem; right: 1rem; background-color: var(--rich-gold); color: var(--cream); padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.875rem; font-weight: 700; }
+        .product-content { padding: 1.5rem; }
+        .product-card h3 { font-size: 1.125rem; margin-bottom: 0.5rem; transition: color 0.3s ease; }
+        .product-card:hover h3 { color: var(--rich-gold); }
+        .product-card p { font-size: 0.875rem; color: rgba(26, 20, 16, 0.6); margin-bottom: 1rem; }
+        .product-footer { display: flex; justify-content: space-between; align-items: center; }
+        .price { font-size: 1.5rem; font-weight: 700; color: var(--rich-gold); }
+        .section-cta { text-align: center; }
+
+        /* Our process */
+        .our-story { padding: 5rem 0; }
+        .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+        .story-text h2 { color: var(--forest-green); margin-bottom: 1.5rem; }
+        .story-text p { font-size: 1.125rem; color: rgba(26, 20, 16, 0.7); margin-bottom: 1.5rem; line-height: 1.8; font-weight: 300; }
+        .story-image { border-radius: 1rem; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); height: 38rem; }
+        .story-image img { width: 100%; height: 100%; object-fit:fill; }
+
+        /* Contact Section - Professional Icons */
+        .contact { padding: 5rem 0; }
+        .contact .section-header h2 { color: #000; font-weight: 900; }
+        .contact .section-header p { color: #000; font-weight: 700; }
+        .contact-methods { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 4rem; }
+        .contact-card { 
+            background-color: white; 
+            padding: 2.5rem 2rem; 
+            border-radius: 1rem; 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); 
+            text-align: center; 
+            text-decoration: none; 
+            color: inherit; 
+            transition: all 0.4s ease; 
+            border: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        .contact-card:hover { 
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12); 
+            transform: translateY(-8px); 
+        }
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .contact-card:hover::before {
+            opacity: 1;
+        }
+        .contact-icon-wrapper {
+            position: relative;
+            margin-bottom: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .contact-icon { 
+            font-size: 2.2rem; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 2;
+        }
+        .contact-icon-bg {
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            opacity: 0.15;
+            transition: all 0.4s ease;
+            z-index: 1;
+        }
+        .contact-card:hover .contact-icon {
+            transform: scale(1.1);
+        }
+        .contact-card:hover .contact-icon-bg {
+            transform: scale(1.3);
+            opacity: 0.2;
+        }
+        /* WhatsApp Icon */
+        .contact-card:nth-child(1) .contact-icon {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+        }
+        .contact-card:nth-child(1) .contact-icon-bg {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+        }
+        /* Email Icon */
+        .contact-card:nth-child(2) .contact-icon {
+            background: linear-gradient(135deg, #EA4335, #D93025);
+            color: white;
+            box-shadow: 0 6px 20px rgba(234, 67, 53, 0.3);
+        }
+        .contact-card:nth-child(2) .contact-icon-bg {
+            background: linear-gradient(135deg, #EA4335, #D93025);
+        }
+        /* Location Icon */
+        .contact-card:nth-child(3) .contact-icon {
+            background: linear-gradient(135deg, #4285F4, #1A73E8);
+            color: white;
+            box-shadow: 0 6px 20px rgba(66, 133, 244, 0.3);
+        }
+        .contact-card:nth-child(3) .contact-icon-bg {
+            background: linear-gradient(135deg, #4285F4, #1A73E8);
+        }
+        .contact-card h3 { 
+            margin-bottom: 0.75rem; 
+            transition: color 0.3s ease; 
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #000;
+        }
+        .contact-card:hover h3 { color: var(--rich-gold); }
+        .contact-card p { 
+            color: #000; 
+            font-weight: 700; 
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* FOOTER STYLES FROM FIRST CODE */
+        .footer {
+            background-color: #0a4d1e;
+            color: #fff;
+            text-align: center;
+            padding: 30px 0;
+            position: relative;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .social-icons {
+            margin-bottom: 15px;
+        }
+
+        .social-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 22px;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #ffd700;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+
+        .footer-links li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        .footer-links a {
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.8;
+        }
+
+        .footer-text {
+            margin-top: 15px;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .scroll-top {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ffd700;
+            color: #0a4d1e;
+            border: none;
+            border-radius: 50%;
+            padding: 12px;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            z-index: 1000;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scroll-top:hover {
+            background-color: #ffcc00;
+        }
+
+        /* Animations */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes scaleIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+        .fade-in { animation: fadeIn 0.8s ease-in-out; }
+        .fade-in-up { animation: fadeInUp 0.6s ease-out forwards; opacity: 0; }
+        .scale-in { animation: scaleIn 0.6s ease-out forwards; opacity: 0; }
+        .hover-lift { transition: all 0.3s ease; }
+        .hover-lift:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2) !important; }
+
+        /* Enhanced Button Styles */
+        .btn-explore {
+            background: linear-gradient(135deg, #4CAF50 0%, #2e7d32 100%);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+            border: 3px solid #b6f36c;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            animation: buttonPulse 2s infinite;
+        }
+        
+        .btn-explore:hover {
+            background: linear-gradient(135deg, #2e7d32 0%, #4CAF50 100%);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(76, 175, 80, 0.6);
+            animation: none;
+        }
+        
+        .btn-explore::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
+        }
+        
+        .btn-explore:hover::before {
+            left: 100%;
+        }
+        
+        @keyframes buttonPulse {
+            0% { box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4); }
+            50% { box-shadow: 0 8px 30px rgba(76, 175, 80, 0.7); }
+            100% { box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            * { box-sizing: border-box; }
+            
+            body {
+                width: 100vw;
+                overflow-x: hidden;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .hamburger { display: flex; }
+            .desktop-nav { display: none; }
+            header { 
+                padding: 10px 15px; 
+                width: 100vw;
+                box-sizing: border-box;
+            }
+            header .logo { font-size: 1.1em; }
+            
+            .hero {
+                width: 100vw;
+                height: 100vh;
+                padding: 0;
+                margin: 0;
+            }
+            
+            .hero-content {
+                width: 100%;
+                padding: 0 20px;
+                box-sizing: border-box;
+            }
+            
+            .container {
+                width: 100vw;
+                padding: 0 15px;
+                margin: 0;
+                box-sizing: border-box;
+            }
+            
+            .cards-grid {
+                width: 100%;
+                padding: 0;
+                gap: 15px;
+            }
+            
+            .card {
+                width: 100%;
+                margin: 0;
+                box-sizing: border-box;
+            }
+            
+            .story-grid { 
+                grid-template-columns: 1fr;
+                width: 100%;
+                gap: 20px;
+            }
+            .story-image { height: 18rem; }
+            .contact-methods { 
+                grid-template-columns: 1fr;
+                width: 100%;
+                gap: 15px;
+            }
+            
+            h1 { 
+                font-size: 1.5rem;
+                line-height: 1.2;
+                margin: 0 0 15px 0;
+            }
+            h2 { 
+                font-size: 1.6rem;
+                margin: 0 0 15px 0;
+            }
+            .section-header p { 
+                font-size: 0.95rem;
+                margin: 0;
+            }
+            .hero-content p { 
+                font-size: 0.85rem;
+                margin: 0 0 20px 0;
+            }
+            
+            .center-logo {
+                top: 60px;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .center-logo img {
+                height: 45px;
+            }
+            
+            section {
+                width: 100vw;
+                padding: 40px 0;
+                margin: 0;
+            }
+            
+            .btn-explore {
+                padding: 12px 25px;
+                font-size: 1rem;
+                width: auto;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header { padding: 8px 12px; }
+            header .logo { font-size: 1rem; }
+            
+            .hero-content {
+                padding: 0 15px;
+            }
+            
+            .container {
+                padding: 0 12px;
+            }
+            
+            h1 { font-size: 1.3rem; }
+            h2 { font-size: 1.4rem; }
+            
+            .center-logo {
+                top: 55px;
+            }
+            
+            .center-logo img {
+                height: 40px;
+            }
+            
+            .btn-explore {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .products-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header from first code -->
+    <header>
+        <div class="hamburger" onclick="toggleSidebar()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <div class="logo">
+            <img src="images/img.gif" alt="Logo" />
+            Poornam Naturals
+        </div>
+        
+        <nav class="desktop-nav">
+            <a href="#" onclick="showHome()">Home</a>
+            <a href="products.html">Products</a>
+            <a href="about.html" onclick="showAbout()">About Us</a>
+        </nav>
+        
+        <div id="google_translate_element"></div>
+    </header>
+
+    <div class="center-logo">
+        <img src="images/mathi-logo.png" alt="Center Logo">
+    </div>
+
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <span>Menu</span>
+            <div class="close-btn" onclick="toggleSidebar()">&times;</div>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#" onclick="showHome(); toggleSidebar()">Home</a>
+            <a href="products.html">Products</a>
+            <a href="about.html" onclick="showAbout(); toggleSidebar()">About Us</a>
+        </nav>
+    </div>
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content fade-in">
+            <h1>Taste the Purity, Feel the Tradition</h1>
+<p>Premium cold-pressed oils and ancient rice varieties crafted with love for your healthy lifestyle.</p>
+                <button class="btn-explore hover-lift" onclick="window.location.href='products.html'">Explore Products</button>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-dot"></div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="why-us" class="why-us section-bg-warm">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Why Choose Poornam Naturals?</h2>
+                <p>We're committed to bringing you the purest, most authentic natural products that nourish body and soul.</p>
+            </div>
+
+            <div class="cards-grid">
+                <!-- Card 1: Pure & Organic -->
+                <div class="card hover-lift fade-in-up">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2l2 4h4l-3 3 1 4-4-2-4 2 1-4-3-3h4l2-4z"/>
+                        </svg>
+                    </div>
+                    <h3>Pure & Organic</h3>
+                    <p>All ingredients are sourced from certified organic farms. No chemicals, no additives, just nature's best.</p>
+                </div>
+
+                <!-- Card 2: Traditional Methods -->
+                <div class="card hover-lift fade-in-up">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                    </div>
+                    <h3>Traditional Methods</h3>
+                    <p>Handcrafted using time-honored techniques passed down through generations. Quality over everything.</p>
+                </div>
+
+                <!-- Card 3: Peak Nutrition -->
+                <div class="card hover-lift fade-in-up">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="1"/><path d="M12 2v8m0 4v8M4.22 4.22l5.66 5.66m4.24 4.24l5.66 5.66M2 12h8m4 0h8M4.22 19.78l5.66-5.66m4.24-4.24l5.66-5.66"/>
+                        </svg>
+                    </div>
+                    <h3>Peak Nutrition</h3>
+                    <p>Cold-pressed and carefully processed to preserve all natural vitamins and beneficial nutrients.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section id="products" class="featured-products">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Featured Products</h2>
+                <p>Handpicked selections showcasing our most popular and cherished creations.</p>
+            </div>
+
+            <div class="products-grid">
+                <!-- Product 1: Cold Pressed Groundnut Oil -->
+                <div class="product-card scale-in" onclick="openProductDetail('product2')">
+                    <div class="product-image">
+                        <img src="images/p2.png" alt="Cold Pressed Groundnut Oil">
+                        <span class="product-badge">Oils</span>
+                    </div>
+                    <div class="product-content">
+                        <h3>Cold Pressed Groundnut Oil</h3>
+                        <p>Freshly cold-pressed groundnut oil rich in vitamin E and healthy fats.</p>
+                        <div class="product-footer">
+                            <span class="price">₹310.00 / 1L</span>
+                            <button class="btn-icon" onclick="event.stopPropagation(); openProductDetail('product2')">→</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2: Karuppu Kavuni Pongal Ready Mix -->
+                <div class="product-card scale-in" onclick="openProductDetail('product9')">
+                    <div class="product-image">
+                        <img src="images/p9.png" alt="Product 9" >
+                        <span class="product-badge">Ready Mix</span>
+                    </div>
+                    <div class="product-content">
+                        <h3>Karuppu Kavuni Pongal Ready Mix </h3>
+                        <p>Healthy and wholesome pongal mix made with traditional Karuppu Kavuni rice. A perfect breakfast rich in protein and fiber.</p>
+                        <div class="product-footer">
+                            <span class="price">₹134.00 / 250g</span>
+                            <button class="btn-icon" onclick="event.stopPropagation(); openProductDetail('product9')">→</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3: Hill Honey -->
+                <div class="product-card scale-in" onclick="openProductDetail('product29')">
+                    <div class="product-image">
+                        <img src="images/p29.png" alt="Product 29">
+                        <span class="product-badge">Honey</span>
+                    </div>
+                    <div class="product-content">
+                        <h3>Hill Honey /Mazhai Then</h3>
+                        <p>Raw hill honey with natural sweetness and enzyme-rich goodness. Great for immunity and everyday wellness.</p>
+                        <div class="product-footer">
+                            <span class="price">₹195.00 / 250g</span>
+                            <button class="btn-icon" onclick="event.stopPropagation(); openProductDetail('product29')">→</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4:Poongar Puttu Ready Mix-->
+                <div class="product-card scale-in" onclick="openProductDetail('product17')">
+                    <div class="product-image">
+                        <img src="images/p17.png" alt="Product 17">
+                        <span class="product-badge">Ready Mix</span>
+                    </div>
+                    <div class="product-content">
+                        <h3>Poongar Puttu Ready Mix</h3>
+                        <p>Wholesome puttu mix made from Poongar rice. Makes soft, steamed cakes that pair well with coconut and jaggery.</p>
+                        <div class="product-footer">
+                            <span class="price">₹120.00 / 250g</span>
+                            <button class="btn-icon" onclick="event.stopPropagation(); openProductDetail('product17')">→</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-cta">
+                <button class="btn btn-primary hover-lift" onclick="window.location.href='products.html'">
+                    View All Products →
+                </button>
+            </div>
+        </div>
+    </section>
+
+  
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section-bg-warm">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Let's Get In Touch</h2>
+                <p>Reach out to us through any of these channels. We'd love to hear from you!</p>
+            </div>
+
+            <div class="contact-methods">
+                <!-- WhatsApp -->
+                <a href="https://wa.me/9194430373111" class="contact-card hover-lift fade-in-up">
+                    <div class="contact-icon-wrapper">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="contact-icon-bg"></div>
+                    </div>
+                    <h3>WhatsApp</h3>
+                    <p>Chat with us directly</p>
+                </a>
+
+                <!-- Email -->
+                <a href="mailto:asirumalari2@gmail.com" class="contact-card hover-lift fade-in-up">
+                    <div class="contact-icon-wrapper">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-icon-bg"></div>
+                    </div>
+                    <h3>Email</h3>
+                    <p>asirumalari2@gmail.com</p>
+                </a>
+
+                <!-- Location -->
+                <a href="https://maps.app.goo.gl/mSRf2DBtCGyj22N76" class="contact-card hover-lift fade-in-up">
+                    <div class="contact-icon-wrapper">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-icon-bg"></div>
+                    </div>
+                    <h3>Location</h3>
+                    <p>Kattur, Trichy 19</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer from first code -->
+    <footer class="footer">
+        <div class="social-icons">
+            <a href="tel:+919443073111"><i class="fas fa-phone"></i></a>
+            <a href="mailto:asirumalar12@gmail.com"><i class="fas fa-envelope"></i></a>
+            <a href="https://wa.me/919443073111?text=Hi%20Poornam%20Naturals,%20I%20am%20interested%20in%20your%20products.%20Please%20share%20more%20details." target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+
+        <ul class="footer-links">
+            <li><a href="#" onclick="showHome()">Home</a></li>
+            <li><a href="about.html" onclick="showAbout()">About Us</a></li>
+            <li><a href="products.html">Products</a></li>
+        </ul>
+
+        <p class="footer-text">
+            © 2025 Poornam Naturals | Taste the Tradition
+        </p>
+
+        <button class="scroll-top" onclick="window.scrollTo({top:0, behavior:'smooth'});">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </footer>
+
+    <!-- Google Translate Script -->
+    <script>
+        // Set default language based on cookie (before Google loads)
+        (function() {
+            var lang = (document.cookie.match(/(^|;\s*)googtrans=\/en\/(\w+)/) || [])[2];
+            if (lang) {
+                var newCookie = "/en/" + lang;
+                document.cookie = "googtrans=" + newCookie + ";path=/";
+                document.cookie = "googtrans=" + newCookie + ";path=/;domain=" + location.hostname;
+            }
+        })();
+    </script>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,ta',
+                layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+            }, 'google_translate_element');
+        }
+    </script>
+
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script>
+        // Save user-selected language to cookie
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new MutationObserver(() => {
+                const iframe = document.querySelector('iframe.goog-te-menu-frame');
+                if (iframe) {
+                    try {
+                        const items = iframe.contentDocument.querySelectorAll('.goog-te-menu2-item span.text');
+                        items.forEach(span => {
+                            span.addEventListener('click', function() {
+                                const lang = span.innerText.toLowerCase().includes("tamil") ? 'ta' : 'en';
+                                const val = '/en/' + lang;
+                                document.cookie = 'googtrans=' + val + ';path=/';
+                                document.cookie = 'googtrans=' + val + ';path=/;domain=' + location.hostname;
+                            });
+                        });
+                    } catch (err) {
+                        console.warn("Translate frame error", err);
+                    }
+                }
+            });
+
+            observer.observe(document.body, { childList: true, subtree: true });
+        });
+
+        // Function to open product details directly
+        function openProductDetail(productId) {
+            // Redirect to products page with product ID as URL parameter
+            window.location.href = `products.html?product=${productId}`;
+        }
+
+        // Sidebar toggle function
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        // Navigation functions
+        function showHome() {
+            // Already on home page
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        function showProducts() {
+            window.location.href = 'products.html';
+        }
+
+        function showAbout() {
+            // Scroll to about section
+            const aboutSection = document.getElementById('story');
+            if (aboutSection) {
+                aboutSection.scrollIntoView({behavior: 'smooth'});
+            }
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.2)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in-up, .scale-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>

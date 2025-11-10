@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>Pooranam Naturals - About Us</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <style>
+/* I have merged all the styles for the new header, sidebar,
+  and your page content into this one <style> block.
+*/
+
+/* ===== COLORS & BASE ===== */
+:root {
+  --green-dark: #0f4d1a;
+  --green-light: #4CAF50;
+  --accent: #FFD700;
+  --white: #ffffff;
+  --text-dark: #222;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom, #f3f9f4, #f8fff3);
+  color: #1b1b1b;
+  overflow-x: hidden;
+  /* This is to fix issues with the Google Translate bar */
+  top: 0 !important; 
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background: url(BG2.jpg) center / cover no-repeat;
+    filter: blur(5px);
+    opacity: 0.9;
+}
+
+iframe{
+    width:100%;
+}
+
+@media (max-width: 768px) {
+    iframe {
+        width: 100% !important;
+        height: 300px !important;
+        max-width: 100%;
+    }
+    
+    .loc-section {
+        padding: 1rem;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .loc-section div {
+        width: 100%;
+        overflow: hidden;
+    }
+}
+
+@media (max-width: 480px) {
+    iframe {
+        width: 100% !important;
+        height: 250px !important;
+        max-width: 100%;
+    }
+}
+
+
+/* ============================================
+ HEADER, SIDEBAR, & TRANSLATE STYLES
+ ============================================
+*/
+
+/* HEADER */
+header {
+  background: #4CAF50;
+  color: #fff;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-sizing: border-box;
+  /* This calculates the 80px height: 20px pad + 40px img + 20px pad */
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #b6f36c;
+  margin-left: clamp(5px, 1.5vw, 20px);
+}
+
+header .logo img {
+  width: 40px;  /* Height is 40px */
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #b6f36c;
+  margin-right: 10px;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 5px;
+  flex-shrink: 0;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: white;
+  margin: 3px 0;
+  transition: 0.3s;
+}
+
+.desktop-nav {
+  display: block; /* Show on desktop */
+}
+
+.desktop-nav a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1em;
+  position: relative;
+}
+.desktop-nav a.active {
+  color: #b6f36c;
+}
+.desktop-nav a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #b6f36c;
+  border-radius: 2px;
+}
+
+
+/* SIDEBAR */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -200px; /* Start hidden */
+  width: 200px;
+  height: 100vh;
+  background: #4CAF50;
+  z-index: 99999;
+  transition: left 0.3s ease;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+  overflow-y: auto;
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: #2e7d32;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2em;
+  position: relative;
+}
+
+.sidebar-header .close-btn {
+  font-size: 18px;
+  cursor: pointer;
+  color: white;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10000;
+  background: rgba(0,0,0,0.5);
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.sidebar-nav {
+  padding: 30px 0;
+  margin-top: 20px;
+}
+
+.sidebar-nav a {
+  display: block;
+  color: white;
+  padding: 18px 20px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1em;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  transition: all 0.3s;
+  background: rgba(255,255,255,0.05);
+  margin: 2px 10px;
+  border-radius: 8px;
+}
+
+.sidebar-nav a:hover {
+  background: rgba(255,255,255,0.2);
+  transform: translateX(5px);
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  z-index: 99998;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.sidebar-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* GOOGLE TRANSLATE */
+#google_translate_element {
+  flex-shrink: 0;
+}
+
+#google_translate_element select {
+  font-size: 12px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  min-width: 80px;
+}
+
+#google_translate_element select:hover {
+  border-color: #4CAF50;
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+/* Hide Google Translate banner */
+.goog-te-banner-frame.skiptranslate,
+.goog-te-banner-frame,
+body > .skiptranslate {
+  display: none !important;
+}
+
+html body .goog-te-banner-frame,
+html body .goog-te-banner-frame.skiptranslate {
+  top: 0!important;
+  z-index: 99999 !important;
+}
+
+
+/* ============================================
+ ABOUT PAGE CONTENT STYLES
+ ============================================
+*/
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%; 
+  background: linear-gradient(45deg, #f0fff0, #e8f5e8, #f8fff8);
+  
+  /* *** THIS IS THE FIX ***
+    Changed padding-top from 8rem (128px) to 80px
+    to perfectly match the 80px fixed header.
+  */
+  padding: 8rem 1.5rem 4rem 1.5rem; 
+  
+  gap: 2.5rem; 
+}
+
+
+main h2 {
+    color: var(--green-dark);
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+main h3 {
+    color: var(--green-dark);
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+main p {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    color: #000;
+}
+main p:last-of-type {
+    margin-bottom: 0;
+}
+main p strong {
+    color: var(--green-dark);
+    font-weight: 600;
+}
+
+
+.abt, .awd, .loc-section {
+    width: 100%; 
+    max-width: 1000px;
+    background: linear-gradient(135deg, #f0fff0, #e8f5e8, #f8fff8);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s ease;
+    border: 3px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.abt::before, .awd::before, .loc-section::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(45deg, #C8E6C9, #E8F5E8, #A5D6A7, #DCEDC8, #C8E6C9);
+    background-size: 300% 300%;
+    border-radius: 13px;
+    z-index: -1;
+    animation: borderGlow 3s ease-in-out infinite;
+}
+
+@keyframes borderGlow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.abt {
+    max-width: 1000px;
+}
+
+.abt:hover, .awd:hover ,.loc-section:hover{
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.175);
+    transform: translateY(-15px);
+    transition: all 0.4s ease;
+}
+
+/* ===== AWARDS SECTION STYLES WITH SLIDESHOW ===== */
+
+.awd_des {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 2rem;
+}
+
+.slideshow-container {
+    max-width: 400px;
+    position: relative;
+    margin: 2rem auto 0.5rem auto;
+    width: 100%;
+}
+
+.mySlides {
+    display: none;
+}
+
+.slideshow-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 4px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active-dot, .dot:hover {
+    background-color: var(--green-light);
+}
+
+.awd-text-content {
+    flex: 1;
+}
+
+.dots{
+    text-align: center;
+    margin-top: 0.5rem;
+    display: flex;
+    width: 400px;
+    align-items: center;
+    justify-content: center;
+}
+
+.awd_des img {
+    width: 100%;
+    height: 220px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+}
+
+.mySlides:nth-child(3) img {
+    object-fit: contain;
+    background: white;
+}
+
+.awd_des div {
+    flex: 1;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--green-dark);
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+  color: #FFF8E1;
+  position: relative;
+}
+.social-icons {
+  margin-bottom: 1.5rem;
+}
+.social-icons a {
+  color: var(--white);
+  font-size: 1.5rem;
+  margin: 0 0.75rem;
+  transition: color 0.3s ease;
+  text-decoration: none; /* Removes underline from icons */
+}
+.social-icons a:hover {
+  color: var(--accent);
+}
+footer p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+.footer-links a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.footer-links a:hover {
+  color: #FFF8E1;
+}
+.back-to-top {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--accent);
+  color: var(--green-dark);
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 1.2rem;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.back-to-top:hover {
+  background: var(--white);
+  transform: scale(1.1);
+}
+
+/* This handles the mobile view for the arrow */
+@media (max-width: 768px) {
+  .back-to-top {
+    bottom: 1rem;
+    right: 1rem;
+  }
+}
+
+/* FOOTER STYLES */
+.site-footer {
+    background-color: var(--green-dark);
+    color: #fff;
+    padding-top: 50px;
+    padding-bottom: 0;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-bottom: 50px;
+}
+
+.footer-column {
+    padding: 10px;
+    flex: 1; 
+    min-width: 250px;
+}
+
+.footer-about {
+    flex: 1.5;
+    max-width: 450px;
+    min-width: 300px;
+}
+.footer-links, .footer-categories {
+    flex: 0.75;
+    min-width: 200px;
+}
+
+/* Using .footer-about .logo to avoid conflict with header .logo */
+.footer-about .logo {
+    font-family: inherit;
+    font-size: 24px;
+    line-height: 1;
+    margin-top:20px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.footer-about .logo i {
+    margin-right: 8px;
+    font-size: 28px; 
+}
+
+.about-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #ddd;
+    margin-bottom: 30px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    font-size: 25px;
+}
+
+.social-icons a {
+    color: #fff;
+    transition: color 0.2s;
+}
+
+.social-icons a:hover {
+    color: var(--accent);
+}
+
+.column-heading {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--accent);
+}
+
+.link-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.link-list li {
+    margin-bottom: 10px;
+}
+
+.link-list a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.link-list a:hover {
+    color: var(--accent);
+}
+
+.footer-copyright {
+    border-top: 1px solid var(--accent); 
+    text-align: center;
+    padding: 20px 20px;
+    font-size: 1rem;
+    color: #ddd;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- RESPONSIVE STYLES --- */
+@media (min-width: 800px) {
+    .awd_des {
+        flex-direction: row;
+        align-items: center;
+        gap: 3rem;
+    }
+    
+    .slideshow-container {
+        flex-basis: 450px;
+        margin-bottom: 0;
+    }
+
+    .awd-text-content {
+        max-width: 100%;
+    }
+
+    .awd_des img {
+        flex-basis: 450px;
+        margin-bottom: 0;
+    }
+
+    .awd_des div {
+        max-width: 100%;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .dots{
+        width:100% !important;
+    }
+    
+    .slideshow-container {
+        max-width: 100%;
+        margin: 1rem auto 0.5rem auto;
+    }
+    
+    .slideshow-container img {
+        object-fit: contain;
+        max-height: 250px;
+        width: auto;
+        max-width: 100%;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        padding-bottom: 20px;
+    }
+
+    .footer-column {
+        min-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    main,footer{
+        width:100%;
+    }
+    
+    /* Show hamburger, hide desktop nav */
+    .hamburger { display: flex; }
+    .desktop-nav { display: none; }
+    header { padding: 15px 20px; }
+
+    /* Reposition translate dropdown */
+    #google_translate_element {
+      position: static;
+      transform: none;
+      margin-left: auto;
+    }
+    #google_translate_element select {
+      padding: 5px 6px;
+      font-size: 11px;
+      min-width: 70px;
+    }
+}
+
+@media (max-width: 480px) {
+  #google_translate_element select {
+    padding: 4px 5px;
+    font-size: 10px;
+    min-width: 60px;
+  }
+}
+
+@media (max-width: 320px) {
+  #google_translate_element {
+    right: 10px;
+  }
+  #google_translate_element select {
+    padding: 3px 4px;
+    font-size: 9px;
+    min-width: 50px;
+  }
+}
+
+/* Hide Google Translate powered by text */
+.goog-te-gadget-simple {
+  font-size: 0 !important;
+}
+.goog-te-gadget-simple .goog-te-combo {
+  font-size: 12px !important;
+  margin: 0 !important;
+}
+.goog-te-gadget-simple .goog-te-menu-value span {
+  font-size: 0 !important;
+}
+.goog-te-gadget-simple .goog-te-menu-value span:last-child {
+  font-size: 12px !important;
+}
+
+</style>
+</head>
+
+<body id="home">
+
+<header>
+  <div class="hamburger" onclick="toggleSidebar()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  
+  <div class="logo">
+    <img src="img.gif" alt="Logo" />
+    Poornam Naturals
+  </div>
+  
+  <nav class="desktop-nav">
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="about.html" class="active">About Us</a>
+  </nav>
+  
+  <div id="google_translate_element"></div>
+</header>
+
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <span>Menu</span>
+    <div class="close-btn" onclick="toggleSidebar()">×</div>
+  </div>
+  <nav class="sidebar-nav">
+    <a href="index.html" onclick="toggleSidebar()">Home</a>
+    <a href="products.html" onclick="toggleSidebar()">Products</a>
+    <a href="about.html" onclick="toggleSidebar()">About Us</a>
+  </nav>
+</div>
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+<main>
+
+    <div class="abt">
+        <h3>Our Story: Pure Tradition, Modern Convenience</h3>
+
+        <h3>The Purity of Our Oils</h3>
+        <p>
+            We produce our oils using a traditional wooden press (mara-chekku). 
+            Our press is unique, crafted from a Vagai wood pestle and a stone mortar. 
+            This "cold-press" method generates no heat. This is vital because 
+            it locks in 100% of the natural nutrients and vitamins from the seeds, 
+            giving your body only the best.
+        </p>
+
+        <h3>The Goodness of Our Rice</h3>
+        <p>
+            We believe in the power of our heritage rice, but we also know 
+            your time is precious. Traditionally, these rices require 6 hours 
+            of soaking. We've solved that. Our Ready Mix Items let you skip 
+            the long wait and prepare a healthy, traditional meal in just 15 minutes. 
+            At Pooranam, we make healthy eating simple, fast, and authentic.
+        </p>
+    </div>
+
+
+    <div class="awd">
+    <h3>Our Awards & Recognition</h3>
+    <div class="awd_des">
+        
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <img src="award1.jpg" alt="Pooranam receiving award for quality 1">
+            </div>
+            <div class="mySlides fade">
+                <img src="award2.jpg" alt="Pooranam receiving award for innovation 2">
+            </div>
+            <div class="mySlides fade">
+                <img src="award3.jpg" alt="Pooranam receiving award for tradition 3">
+            </div>
+            
+            <div class="dots">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+            </div>
+        </div>
+        <div class="awd-text-content">
+               <p>
+    We are deeply honored to receive the <strong>Best Entrepreneur Award – 2025</strong> from the 
+    <strong>Tamil Nadu Women Industry Association of Entrepreneurs, Tiruchirappalli</strong>.
+</p>
+<p>
+    This award recognizes the smooth functioning of our <strong>oilseed and small grain food products manufacturing</strong>. 
+    To us, it’s more than recognition—it’s a celebration of our dedication and values.
+</p>
+<p>
+    It reaffirms our <strong>commitment to quality</strong>, traditional methods, and uncompromising standards, 
+    ensuring the <strong>purity</strong> of every product we make.
+</p>
+<p>
+    This honor motivates us to continue our journey with integrity and excellence.
+</p>
+            </div>
+    </div>
+</div>
+
+    <div class="loc-section">
+
+        <div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m8!1m3!1d1959.589897052624!2d78.74179725413018!3d10.797537708538066!3m2!1i1024!2i768!4f13.1!4m6!3e6!4m0!4m3!3m2!1d10.7979167!2d78.74180559999999!5e0!3m2!1sen!2sin!4v1762026828772!5m2!1sen!2sin"
+             width="600" 
+             height="450" 
+             style="border:0;" 
+             allowfullscreen="" 
+             loading="lazy" 
+             referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+
+    </div>
+
+    </main>
+
+ <footer>
+  <div class="social-icons">
+    <a href="mailto:asirumalar2@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Send us an email">
+      <i class="fas fa-envelope"></i>
+    </a>
+    
+    <a href="https://wa.me/919443073111" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <a href="tel:+919443073111" target="_blank" rel="noopener noreferrer" aria-label="Call us">
+      <i class="fas fa-phone"></i>
+    </a>
+    
+    <a href="https://www.facebook.com/479278571935430" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
+      <i class="fab fa-facebook"></i>
+    </a>
+    
+    <a href="https://www.instagram.com/sirumalar.76/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+  </div>
+
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="products.html">Products</a>
+    
+  </div>
+
+  <p>© 2025 Pooranam Naturals | Taste the Tradition</p>
+
+  <a href="#home" class="back-to-top" aria-label="Back to top" onclick="scrollToTop(event)">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+</footer>
+
+<script src="script.js"></script>
+
+<script>
+  // Set default language based on cookie (before Google loads)
+  (function() {
+    var lang = (document.cookie.match(/(^|;\s*)googtrans=\/en\/(\w+)/) || [])[2];
+    if (lang) {
+      var newCookie = "/en/" + lang;
+      document.cookie = "googtrans=" + newCookie + ";path=/;max-age=31536000";
+      if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+        document.cookie = "googtrans=" + newCookie + ";path=/;domain=" + location.hostname + ";max-age=31536000";
+      }
+    }
+  })();
+</script>
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,ta',
+      layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+    }, 'google_translate_element');
+  }
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script>
+  // Save user-selected language to cookie
+  document.addEventListener('DOMContentLoaded', function() {
+    // Hide Google Translate powered by text
+    function hideGoogleTranslateText() {
+      const translateElement = document.querySelector('.goog-te-gadget-simple');
+      if (translateElement) {
+        const spans = translateElement.querySelectorAll('span');
+        spans.forEach(span => {
+          if (span.textContent.includes('Powered by') || span.textContent.includes('Google Translate')) {
+            span.style.display = 'none';
+          }
+        });
+      }
+    }
+    
+    // Run immediately and on mutations
+    hideGoogleTranslateText();
+    setTimeout(hideGoogleTranslateText, 1000);
+    
+    const observer = new MutationObserver(() => {
+      hideGoogleTranslateText();
+      const iframe = document.querySelector('iframe.goog-te-menu-frame');
+      if (iframe) {
+        try {
+          const items = iframe.contentDocument.querySelectorAll('.goog-te-menu2-item span.text');
+          items.forEach(span => {
+            span.addEventListener('click', function() {
+              const lang = span.innerText.toLowerCase().includes("tamil") ? 'ta' : 'en';
+              const val = '/en/' + lang;
+              document.cookie = 'googtrans=' + val + ';path=/;max-age=31536000';
+              if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+                document.cookie = 'googtrans=' + val + ';path=/;domain=' + location.hostname + ';max-age=31536000';
+              }
+            });
+          });
+        } catch (err) {
+          console.warn("Translate frame error", err);
+        }
+      }
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+  });
+</script>
+
+<script>
+    // --- SLIDESHOW LOGIC ---
+    let slideIndex = 0;
+    let autoSlideInterval;
+
+    function showSlides() {
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        
+        if (slides.length === 0) return; // Don't run if no slides
+
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+            dots[i].className = dots[i].className.replace(" active-dot", "");
+        }
+        
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}    
+        
+        slides[slideIndex-1].style.display = "block";  
+        dots[slideIndex-1].className += " active-dot";
+        
+        resetAutoSlide(); // Restarts the interval
+    }
+
+    function plusSlides(n) {
+        clearInterval(autoSlideInterval);
+        slideIndex += n;
+        
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+
+        if (slides.length === 0) return;
+        
+        if (slideIndex > slides.length) {slideIndex = 1} 
+        if (slideIndex < 1) {slideIndex = slides.length}
+        
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+            dots[i].className = dots[i].className.replace(" active-dot", "");
+        }
+        
+        slides[slideIndex-1].style.display = "block";  
+        dots[slideIndex-1].className += " active-dot";
+
+        resetAutoSlide();
+    }
+
+    function currentSlide(n) {
+        clearInterval(autoSlideInterval);
+        slideIndex = n - 1; 
+        plusSlides(1); 
+    }
+
+    function resetAutoSlide() {
+        clearInterval(autoSlideInterval);
+        autoSlideInterval = setInterval(showSlides, 4000); 
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        // Initialize Slideshow
+        slideIndex = 0; 
+        showSlides(); 
+        autoSlideInterval = setInterval(showSlides, 4000); 
+    });
+
+    // Scroll to top function
+    function scrollToTop(event) {
+        event.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+</script>
+</body>
+</html>
