@@ -489,7 +489,7 @@ function openWhatsAppOrder(productKey, hasOptions, isDetailPage = false) {
     }
   }
 
-  const whatsappNumber = "917373745562";
+  const whatsappNumber = "919443073111";
   const productName = product.name;
   
   const message = `Hello! I want to order:\n\n*Product:* ${productName}\n*Selected Option:* ${selectedWeight} - ₹${selectedPrice}\n\nThank you!`;
