@@ -273,12 +273,12 @@ const products = {
     options: [{ weight: "250g", price: 90.00 }],
     basePrice: 90,
     weight: "250g",
-    img: "images/product20.png",
+    img: "images/p20.png",
     desc: "High-protein adai dosa mix combining three traditional rice varieties. Delicious, filling, and naturally gluten-free.",
     video: "images/p20v.mp4",
     gallery: [
-      { type: "image", src: "images/product20.png" },
-      { type: "image", src: "images/product20_alt.png" },
+      { type: "image", src: "images/p20.png" },
+      { type: "image", src: "images/p20r.png" },
     ],
   },
   product21: {
